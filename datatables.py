@@ -323,7 +323,7 @@ class DataTablesServer(object):
 
 			# Filters on the columns you pass for filtering
 			if self.filter_columns is not None and 'search[value]' in self.request_values \
-			and self.request_values['search[value]'] is not "":
+			and self.request_values['search[value]'] != "":
 				# Figure out if this is a multi-column search
 				multiple_filter_columns = None
 				if len(self.filter_columns) > 1:
