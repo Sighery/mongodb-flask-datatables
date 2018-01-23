@@ -6,6 +6,10 @@ from flask import request
 
 
 class DataTablesServer(object):
+	# Constants
+	ASC = 1
+	DESC = -1
+
 	def __init__(self, request, columns, index, filter_columns, db_name, collection, custom_filtering_function = None, mongo_host = 'localhost', mongo_port = 27017):
 		# Dict with all the arguments from DataTables
 		self.request_values = request.args
@@ -291,7 +295,7 @@ class DataTablesServer(object):
 		case insensitive.
 
 		You can pass your own custom function to deal with the parsing like this:
-		def process_data_function(request_values, columns, filter_column):
+		def process_data_function(request_values, columns, filter_columns):
 			# Do something
 			return filter_dict
 			# Or return None
