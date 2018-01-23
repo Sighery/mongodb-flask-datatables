@@ -13,7 +13,7 @@ First you need to have both [Flask](http://flask.pocoo.org/docs/latest/) and [py
 
 Then you need your Flask application. Let's assume this is your application file hierarchy:
 
-'''
+```
 app
 ├── datatables.py
 ├── main.py
@@ -30,58 +30,58 @@ app
 │   └── sort_desc.png
 └── templates
     └── index.html
-'''
+```
 
 Your index.html file would have a simple table such as:
 
-'''
+```
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8"/>
-		<title>Example</title>
-		<!-- jQuery -->
-		<script src="{{ url_for('static', filename='jquery.min.js') }}" type="text/javascript"></script>
-		<!-- /jQuery -->
-		<!-- DataTables -->
-		<script src="{{ url_for('static', filename='jquery.dataTables.min.js') }}" type="text/javascript"></script>
-		<link href="{{ url_for('static', filename='jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css"/>
-		<!-- /DataTables -->
-		<!-- Bootstrap -->
-		<script src="{{ url_for('static', filename='bootstrap.min.js') }}" type="text/javascript"></script>
-		<link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
-		<!-- /Bootstrap -->
-		<!-- App styles -->
-		<link href="{{ url_for('static', filename='main.css') }}" rel="stylesheet" type="text/css"/>
-		<!-- /App styles -->
-	</head>
-	<body>
-		<table id="example-table"></table>
-		<!-- Configuration for the server side table -->
-		<script>
-			$(document).ready(function() {
-				var table = $('#example-table').DataTable({
-					'searching': true,
-					'lengthChange': true,
-					'serverSide': true,
-					'iDisplayLength': 200,
-					'order': [[1, 'desc'], [2, 'asc']],
-					'ajax': '/example_datatables',
-					'lengthMenu': [10, 25, 50, 100, 150, 200, 250, 300, 400, 500],
-				});
-				// Reload table every 30 seconds
-				setInterval(function() {
-					table.ajax.reload(function() {}, false);
-				}, 30000);
+<head>
+	<meta charset="utf-8"/>
+	<title>Example</title>
+	<!-- jQuery -->
+	<script src="{{ url_for('static', filename='jquery.min.js') }}" type="text/javascript"></script>
+	<!-- /jQuery -->
+	<!-- DataTables -->
+	<script src="{{ url_for('static', filename='jquery.dataTables.min.js') }}" type="text/javascript"></script>
+	<link href="{{ url_for('static', filename='jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css"/>
+	<!-- /DataTables -->
+	<!-- Bootstrap -->
+	<script src="{{ url_for('static', filename='bootstrap.min.js') }}" type="text/javascript"></script>
+	<link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
+	<!-- /Bootstrap -->
+	<!-- App styles -->
+	<link href="{{ url_for('static', filename='main.css') }}" rel="stylesheet" type="text/css"/>
+	<!-- /App styles -->
+</head>
+<body>
+	<table id="example-table"></table>
+	<!-- Configuration for the server side table -->
+	<script>
+		$(document).ready(function() {
+			var table = $('#example-table').DataTable({
+				'searching': true,
+				'lengthChange': true,
+				'serverSide': true,
+				'iDisplayLength': 200,
+				'order': [[1, 'desc'], [2, 'asc']],
+				'ajax': '/example_datatables',
+				'lengthMenu': [10, 25, 50, 100, 150, 200, 250, 300, 400, 500],
 			});
-		</script>
-	</body>
+			// Reload table every 30 seconds
+			setInterval(function() {
+				table.ajax.reload(function() {}, false);
+			}, 30000);
+		});
+	</script>
+</body>
 <html>
-'''
+```
 
 Your main.css to include needed styling and things such as the icons for the column sorting:
 
-'''
+```
 .sorting {
 	background: url("sort_both.png") no-repeat center right !important;
 }
@@ -94,5 +94,4 @@ Your main.css to include needed styling and things such as the icons for the col
 thead > tr > th {
 	text-align: center;
 }
-'''
-
+```
